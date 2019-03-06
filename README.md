@@ -1,4 +1,4 @@
-## MBP React project boilerplate
+## React project boilerplate
 
 #### Stack:
 
@@ -17,6 +17,7 @@
 
 #### Features:
   - HMR
+  - Ignore moment locales
   - ~~code splitting~~
 
 > For eslint, babel, editorconfig and browserlist configs look at rc files in the root of the project.
