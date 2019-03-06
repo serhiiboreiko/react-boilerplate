@@ -1,0 +1,1 @@
+## MBP React project boilerplate
