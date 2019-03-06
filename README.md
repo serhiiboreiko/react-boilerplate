@@ -41,7 +41,7 @@ To change the environment just specify it as a flag
 yarn build --hotfixes
 ```
 
-be SURE that you have `.env` file for this environment. (take a look at `.env.hotfixes` or `.env.production` for example)
+be **SURE** that you have `.env` file for this environment. (take a look at `.env.hotfixes` or `.env.production` for example)
 
 To **start** project in development mode just run next command:
 
