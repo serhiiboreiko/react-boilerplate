@@ -8,6 +8,8 @@
 - [ ] Search for some tools to decrease build size
 - [ ] `svg-loader` (inline all svg icons)
 - [ ] thunk / saga
+- [x] bundle analyzer
+- [ ] jest
 
 #### Stack:
 
@@ -34,34 +36,39 @@
 ### Usage:
 
 To **build** project just run:
-```
+```bash
 npm run build
 ```
 
 or
 
-```
+```bash
 yarn build
 ```
 
 This will build project with `production` environment.
 
 To change the environment just specify it as a flag
-```
+```bash
 yarn build --hotfixes
 ```
 
 be **SURE** that you have `.env` file for this environment. (take a look at `.env.hotfixes` or `.env.production` for example)
 
+If you want to analyze your build, just run:
+```bash
+yarn build --analyze
+```
+
 To **start** project in development mode just run next command:
 
-```
+```bash
 npm start
 ```
 
 or
 
-```
+```bash
 yarn start
 ```
 

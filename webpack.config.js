@@ -9,6 +9,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const DEFAULT_ENV = 'production';
 
@@ -47,7 +48,7 @@ const getEnvConfig = (argv, mode) => {
   return envKeys;
 };
 
-module.exports = (_, { mode, ...argv }) => ({
+module.exports = (_, { mode, analyze, ...argv }) => ({
   entry: {
     index: './src/index.js',
   },
@@ -173,5 +174,6 @@ module.exports = (_, { mode, ...argv }) => ({
       chunkFilename: 'css/chunk.[id].[contenthash].css',
     }),
     new webpack.HotModuleReplacementPlugin(),
-  ],
+    analyze && new BundleAnalyzerPlugin(),
+  ].filter(Boolean),
 });
