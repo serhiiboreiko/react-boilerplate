@@ -6,7 +6,7 @@
 - [ ] fix HMR
 - [ ] Check React lazy and suspense (instead of react-loadable)
 - [ ] Search for some tools to decrease build size
-- [ ] `svg-loader` (inline all svg icons)
+- [x] svg loader (inline all svg icons)
 - [ ] thunk / saga
 - [x] bundle analyzer
 - [ ] jest

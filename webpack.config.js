@@ -111,11 +111,18 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
   },
   module: {
     rules: [
+      // Eslint
       {
         test: /\.(js|jsx|mjs)$/,
         enforce: 'pre',
         include: path.resolve(__dirname, 'src'),
         use: { loader: 'eslint-loader' },
+      },
+      // Images optimization
+      {
+        test: /\.(jpg|png|gif)$/,
+        loader: 'image-webpack-loader',
+        enforce: 'pre',
       },
       {
         test: /\.(js|jsx)$/,
@@ -138,9 +145,21 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
         include: path.resolve(__dirname, 'src'),
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 10 * 1024,
           name: 'media/[name].[hash:8].[ext]',
         },
+      },
+      // Use SVG as React components
+      // <SomeIcon />
+      {
+        test: /\.svg$/,
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: 'react-svg-loader',
+            options: { jsx: true },
+          },
+        ],
       },
       {
         test: /\.html$/,
