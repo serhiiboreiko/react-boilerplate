@@ -44,10 +44,13 @@ const getEnvConfig = (argv, mode) => {
 };
 
 module.exports = (_, { mode, ...argv }) => ({
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: (mode === 'production') ? 'js/bundle.[hash:8].js' : 'js/bundle.js',
+    chunkFilename: 'js/[name].[hash:8].bundle.js',
     publicPath: '/',
   },
   stats: {
@@ -77,6 +80,7 @@ module.exports = (_, { mode, ...argv }) => ({
     historyApiFallback: { disableDotRule: true },
   },
   optimization: {
+    splitChunks: { chunks: 'all' },
     minimize: (mode === 'production'),
     minimizer: [
       new TerserPlugin({
