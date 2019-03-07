@@ -11,7 +11,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const getEnvConfig = (argv, mode) => {
-  // Get all files from root that starts with '.env'
+  // Get all files from root that starts with '.env.'
   const envs = fs
     .readdirSync('./')
     .reduce((envs, item) => (/^\.env\..*/g).test(item)
