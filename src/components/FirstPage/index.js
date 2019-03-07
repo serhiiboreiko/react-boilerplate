@@ -15,11 +15,9 @@ class FirstPage extends Component {
   render() {
     const { number } = this.state;
 
-    console.log(process.env.JAVA_API);
-
     return (
       <Text>
-        First page $
+        First Page $
         {number}
       </Text>
     );
