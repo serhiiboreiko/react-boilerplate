@@ -17,7 +17,7 @@ class FirstPage extends Component {
 
     return (
       <Text>
-        First Page $
+        First page $
         {number}
       </Text>
     );

@@ -73,7 +73,7 @@ module.exports = (_, { mode, ...argv }) => ({
     hot: true,
     compress: true,
     watchContentBase: true,
-    quiet: true,
+    stats: 'minimal',
     historyApiFallback: { disableDotRule: true },
   },
   optimization: {
