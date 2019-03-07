@@ -1,5 +1,14 @@
 ## React project boilerplate
 
+### TODO
+
+- [ ] favicon
+- [ ] fix HMR
+- [ ] Check React lazy and suspense (instead of react-loadable)
+- [ ] Search for some tools to decrease build size
+- [ ] `svg-loader` (inline all svg icons)
+- [ ] ...
+
 #### Stack:
 
 - react
@@ -20,7 +29,7 @@
   - Ignore moment locales
   - code splitting
 
-> For eslint, babel, editorconfig and browserlist configs look at rc files in the root of the project.
+> For webpack, eslint, babel, editorconfig and browserlist configs check rc files in the root of the project.
 
 ### Usage:
 
