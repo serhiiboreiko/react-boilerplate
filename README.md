@@ -6,7 +6,7 @@
 - styled-components
 - redux
 - react-router
-- ~~react-loadable~~
+- react-loadable
 
 #### Additional tools:
 - react-intl
@@ -18,7 +18,7 @@
 #### Features:
   - HMR
   - Ignore moment locales
-  - ~~code splitting~~
+  - code splitting
 
 > For eslint, babel, editorconfig and browserlist configs look at rc files in the root of the project.
 
