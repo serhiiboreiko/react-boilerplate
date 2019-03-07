@@ -22,7 +22,7 @@
 
 #### Additional tools:
 - react-intl
-- [daysjs](https://github.com/iamkun/dayjs)
+- [dayjs](https://github.com/iamkun/dayjs)
 - lodash
 - axios
 
