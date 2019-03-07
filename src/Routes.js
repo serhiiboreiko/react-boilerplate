@@ -5,9 +5,9 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
-import FirstPage from 'src/components/FirstPage';
-import SecondPage from 'src/components/SecondPage';
-import NotFound from 'src/components/NotFound';
+import FirstPage from 'src/components/FirstPage/Loadable';
+import SecondPage from 'src/components/SecondPage/Loadable';
+import NotFound from 'src/components/NotFound/Loadable';
 
 export default () => (
   <Switch>
