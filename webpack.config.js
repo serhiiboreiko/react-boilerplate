@@ -6,10 +6,10 @@ const dotenv = require('dotenv');
 // Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const DEFAULT_ENV = 'production';
 
@@ -86,6 +86,7 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
   },
   optimization: {
     splitChunks: { chunks: 'all' },
+    nodeEnv: mode,
     minimize: (mode === 'production'),
     minimizer: [
       new TerserPlugin({
@@ -107,6 +108,7 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
         parallel: true,
         sourceMap: true,
       }),
+      new OptimizeCSSAssetsPlugin({}),
     ],
   },
   module: {
@@ -134,20 +136,13 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
         test: /\.css$/,
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
-        use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.ttf$/, /\.eot$/, /\.woff$/, /\.woff2$/],
         include: path.resolve(__dirname, 'src'),
         loader: 'url-loader',
-        options: {
-          limit: 10 * 1024,
-          name: 'media/[name].[hash:8].[ext]',
-        },
+        options: { limit: 10 * 1024, name: 'media/[name].[hash:8].[ext]' },
       },
       // Use SVG as React components
       // <SomeIcon />
@@ -155,10 +150,7 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
         test: /\.svg$/,
         use: [
           { loader: 'babel-loader' },
-          {
-            loader: 'react-svg-loader',
-            options: { jsx: true },
-          },
+          { loader: 'react-svg-loader', options: { jsx: true } },
         ],
       },
       {
@@ -187,7 +179,6 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
         minifyURLs: true,
       },
     }),
-    new MomentLocalesPlugin({ localesToKeep: [] }),
     new MiniCssExtractPlugin({
       filename: 'css/main.[contenthash].css',
       chunkFilename: 'css/chunk.[id].[contenthash].css',

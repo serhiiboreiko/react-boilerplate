@@ -6,6 +6,7 @@
 - [ ] fix HMR
 - [ ] Check React lazy and suspense (instead of react-loadable)
 - [ ] Search for some tools to decrease build size
+  - [x] css minification
 - [x] svg loader (inline all svg icons)
 - [ ] thunk / saga
 - [x] bundle analyzer
@@ -21,14 +22,13 @@
 
 #### Additional tools:
 - react-intl
-- moment
+- [daysjs](https://github.com/iamkun/dayjs)
 - lodash
 - axios
 
 
 #### Features:
   - HMR
-  - Ignore moment locales
   - code splitting
 
 > For webpack, eslint, babel, editorconfig and browserlist configs check rc files in the root of the project.

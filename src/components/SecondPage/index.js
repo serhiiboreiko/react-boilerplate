@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dayjs from 'dayjs';
 
 class SecondPage extends Component {
   constructor(props) {
@@ -9,7 +10,10 @@ class SecondPage extends Component {
 
   render() {
     return (
-      <div>second page</div>
+      <div>
+        second page
+        {dayjs().format('YYYY MMM DD')}
+      </div>
     );
   }
 }
