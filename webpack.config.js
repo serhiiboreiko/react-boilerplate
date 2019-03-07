@@ -10,6 +10,10 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
+const DEFAULT_ENV = 'production';
+
+// Helper for getting environment config by argument from CLI
+// NOTE: 'mode' and 'env' are two different things
 const getEnvConfig = (argv, mode) => {
   // Get all files from root that starts with '.env.'
   const envs = fs
@@ -21,11 +25,11 @@ const getEnvConfig = (argv, mode) => {
 
   // When you call `yarn build --hotfixes`
   // argv will contain "hotfixes: true"
-  // find env that is "true" otherwise set "production" env
-  const currentEnv = envs.find(env => argv[env]) || 'production';
+  // find env that is "true" otherwise set DEFAULT_ENV
+  const currentEnv = envs.find(env => argv[env]) || DEFAULT_ENV;
 
   if (!currentEnv) {
-    console.warn('Cannot find config for this env. Running as production env.');
+    console.warn(`Cannot find config for this env. Running as ${DEFAULT_ENV} env.`);
   }
 
   // eslint-disable-next-line no-console
@@ -147,6 +151,7 @@ module.exports = (_, { mode, ...argv }) => ({
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin(getEnvConfig(argv, mode)),
     new HtmlWebpackPlugin({
+      favicon: './public/favicon.png',
       template: './public/index.html',
       filename: './index.html',
       minify: {
