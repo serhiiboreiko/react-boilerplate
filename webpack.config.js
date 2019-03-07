@@ -50,6 +50,7 @@ module.exports = (_, { mode, ...argv }) => ({
     filename: (mode === 'production') ? 'js/bundle.[hash:8].js' : 'js/bundle.js',
     publicPath: '/',
   },
+  stats: 'minimal',
   performance: {
     maxEntrypointSize: 500000,
     maxAssetSize: 500000,
