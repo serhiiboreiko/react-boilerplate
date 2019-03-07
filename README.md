@@ -1,11 +1,10 @@
 ## React project boilerplate
 
 ### TODO
-
 - [x] favicon
 - [ ] fix HMR
 - [ ] Check React lazy and suspense (instead of react-loadable)
-- [ ] Search for some tools to decrease build size
+- [x] Search for some tools to decrease build size
   - [x] css minification
 - [x] svg loader (inline all svg icons)
 - [ ] thunk / saga
@@ -13,7 +12,6 @@
 - [ ] jest
 
 #### Stack:
-
 - react
 - styled-components
 - redux
@@ -26,10 +24,9 @@
 - lodash
 - axios
 
-
 #### Features:
-  - HMR
-  - code splitting
+- HMR
+- code splitting
 
 > For webpack, eslint, babel, editorconfig and browserlist configs check rc files in the root of the project.
 
