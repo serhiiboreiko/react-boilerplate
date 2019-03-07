@@ -10,7 +10,7 @@ const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const getEnvConfig = (argv) => {
+const getEnvConfig = (argv, mode) => {
   // Get all files from root that starts with '.env'
   const envs = fs
     .readdirSync('./')
@@ -27,6 +27,9 @@ const getEnvConfig = (argv) => {
   if (!currentEnv) {
     console.warn('Cannot find config for this env. Running as production env.');
   }
+
+  // eslint-disable-next-line no-console
+  console.log(`${(mode === 'development') ? 'Running' : 'Building'} as ${currentEnv} env...`);
 
   // Load env config
   const { parsed } = dotenv.config({ path: `.env.${currentEnv}` });
@@ -126,7 +129,7 @@ module.exports = (_, { mode, ...argv }) => ({
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new webpack.DefinePlugin(getEnvConfig(argv)),
+    new webpack.DefinePlugin(getEnvConfig(argv, mode)),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './index.html',
