@@ -161,6 +161,7 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin(getEnvConfig(argv, mode)),
     new HtmlWebpackPlugin({
       favicon: './public/favicon.png',
@@ -183,7 +184,6 @@ module.exports = (_, { mode, analyze, ...argv }) => ({
       filename: 'css/main.[contenthash].css',
       chunkFilename: 'css/chunk.[id].[contenthash].css',
     }),
-    new webpack.HotModuleReplacementPlugin(),
     analyze && new BundleAnalyzerPlugin(),
   ].filter(Boolean),
 });

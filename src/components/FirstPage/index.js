@@ -15,10 +15,14 @@ const Text = styled.span`
 `;
 
 class FirstPage extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    number: 30,
+  };
 
-    this.state = { number: 1 };
+  onClick = () => {
+    const { number } = this.state;
+
+    this.setState({ number: number + 1 });
   }
 
   render() {
@@ -26,9 +30,12 @@ class FirstPage extends Component {
 
     return (
       <Text>
-        First Page $
+        First Page #
         {number}
         <Icon />
+        <button type="button" onClick={this.onClick}>
+          click
+        </button>
       </Text>
     );
   }

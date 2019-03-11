@@ -2,7 +2,7 @@
 
 ### TODO
 - [x] favicon
-- [ ] fix HMR
+- [x] fix HMR
 - [ ] Check React lazy and suspense (instead of react-loadable)
 - [x] Search for some tools to decrease build size
   - [x] css minification
