@@ -1,19 +1,12 @@
 ## React project boilerplate
 
 ### TODO
-- [x] favicon
-- [x] fix HMR
-- [x] Search for some tools to decrease build size
-  - [x] css minification
-- [x] svg loader (inline all svg icons)
-- [x] bundle analyzer
-- [x] Check React lazy and suspense (instead of react-loadable)
-  - [x] Show some Loading
-  - [x] code splitting should work as well
-  - [x] Create loadable component
-  - [x] Ability to preload components
-- [x] jest
 - [ ] thunk / saga
+- [ ] try to code something
+  - [ ] Button component
+  - [ ] Input component
+  - [ ] Some page
+  - [ ] Loading components
 
 #### Stack:
 - react
