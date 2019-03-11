@@ -37,6 +37,8 @@
 
 ### Usage:
 
+#### Building
+
 To **build** project just run:
 ```bash
 npm run build
@@ -62,6 +64,8 @@ If you want to analyze your build, just run:
 yarn build --analyze
 ```
 
+#### Starting
+
 To **start** project in development mode just run next command:
 
 ```bash
@@ -75,6 +79,8 @@ yarn start
 ```
 
 You also can change environment same as above. (`yarn start --hotfixes`)
+
+#### Testing
 
 To run tests just run this:
 ```bash
