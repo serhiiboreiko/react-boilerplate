@@ -8,10 +8,10 @@
 - [x] svg loader (inline all svg icons)
 - [x] bundle analyzer
 - [x] Check React lazy and suspense (instead of react-loadable)
-  - [x] use `react-loadable` for now
-  - [ ] ~~Create loadable component with ability to preload (just like react-loadable)~~
-  - [ ] ~~Show some Loading~~
-  - [ ] ~~code splitting should work as well~~
+  - [x] Show some Loading
+  - [x] code splitting should work as well
+  - [x] Create loadable component
+  - [x] Ability to preload components
 - [ ] thunk / saga
 - [ ] jest
 

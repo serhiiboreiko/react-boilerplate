@@ -1,5 +1,22 @@
-import Loadable from 'react-loadable';
+import React, { lazy, Suspense } from 'react';
 
 import Loading from './Loading';
 
-export default (config) => Loadable({ loading: Loading, ...config });
+const loadable = (
+  importFunction,
+  { fallback = <Loading /> } = { fallback: <Loading /> },
+) => {
+  const LazyComponent = lazy(importFunction);
+
+  const Wrapper = (props) => (
+    <Suspense fallback={fallback}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
+
+  Wrapper.preload = importFunction;
+
+  return Wrapper;
+};
+
+export default loadable;

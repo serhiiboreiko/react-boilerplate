@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import FirstPage from 'src/components/FirstPage/Loadable';
+
 const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
@@ -18,10 +20,12 @@ const Code = styled.div`
   margin-bottom: 12px;
 `;
 
+const onHover = () => FirstPage.preload();
+
 const NotFound = () => (
   <Wrap>
     <Code>404</Code>
-    <NavLink to="/">Home</NavLink>
+    <NavLink to="/" onMouseEnter={onHover}>Home</NavLink>
   </Wrap>
 );
 
