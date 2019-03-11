@@ -12,8 +12,8 @@
   - [x] code splitting should work as well
   - [x] Create loadable component
   - [x] Ability to preload components
+- [x] jest
 - [ ] thunk / saga
-- [ ] jest
 
 #### Stack:
 - react
