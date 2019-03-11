@@ -20,7 +20,6 @@
 - styled-components
 - redux
 - react-router
-- react-loadable
 
 #### Additional tools:
 - react-intl
