@@ -20,6 +20,8 @@
 - styled-components
 - redux
 - react-router
+- jest
+- thunk / saga
 
 #### Additional tools:
 - react-intl
@@ -73,3 +75,10 @@ yarn start
 ```
 
 You also can change environment same as above. (`yarn start --hotfixes`)
+
+To run tests just run this:
+```bash
+yarn test
+```
+
+You can always run this with some options like `--watch`. (See jest [docs](https://jestjs.io/docs/en/cli))
