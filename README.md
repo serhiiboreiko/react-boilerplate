@@ -2,8 +2,7 @@
 
 ### TODO
 - [x] favicon
-- [ ] fix HMR
-  - [ ] check if we can update state
+- [x] fix HMR
 - [x] Search for some tools to decrease build size
   - [x] css minification
 - [x] svg loader (inline all svg icons)
