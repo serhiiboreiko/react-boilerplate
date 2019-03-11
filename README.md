@@ -3,12 +3,15 @@
 ### TODO
 - [x] favicon
 - [x] fix HMR
-- [ ] Check React lazy and suspense (instead of react-loadable)
 - [x] Search for some tools to decrease build size
   - [x] css minification
 - [x] svg loader (inline all svg icons)
-- [ ] thunk / saga
 - [x] bundle analyzer
+- [ ] Check React lazy and suspense (instead of react-loadable)
+  - [ ] Create loadable component with ability to preload (just like react-loadable)
+  - [ ] Show some Loading
+  - [ ] code splitting should work as well
+- [ ] thunk / saga
 - [ ] jest
 
 #### Stack:
