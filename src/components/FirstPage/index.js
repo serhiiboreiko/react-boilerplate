@@ -1,42 +1,24 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
-import Icon from 'src/assets/icons/add.svg';
-
-const Text = styled.span`
-  color: ${props => props.theme.blue};
-
-  & svg {
-    width: 30px;
-    height: 30px;
-
-    & path { fill: red; }
-  }
-`;
+import Input from 'src/components/shared/Form/Input';
 
 class FirstPage extends Component {
   state = {
-    number: 30,
+    input: '',
   };
 
-  onClick = () => {
-    const { number } = this.state;
-
-    this.setState({ number: number + 1 });
+  onChange = (event) => {
+    this.setState({ input: event.target.value });
   }
 
   render() {
-    const { number } = this.state;
+    const { input } = this.state;
 
     return (
-      <Text>
-        First Page #
-        {number}
-        <Icon />
-        <button type="button" onClick={this.onClick}>
-          click
-        </button>
-      </Text>
+      <div>
+        Your value:
+        <Input value={input} onChange={this.onChange} />
+      </div>
     );
   }
 }

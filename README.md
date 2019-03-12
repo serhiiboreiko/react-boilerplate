@@ -2,11 +2,6 @@
 
 ### TODO
 - [ ] thunk / saga
-- [ ] try to code something
-  - [ ] Button component
-  - [ ] Input component
-  - [ ] Some page
-  - [ ] Loading components
 
 #### Stack:
 - react
