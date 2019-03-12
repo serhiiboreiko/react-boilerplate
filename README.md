@@ -5,9 +5,10 @@
 
 #### Stack:
 - react
-- styled-components
 - redux
 - react-router
+- prop-types
+- styled-components
 - jest
 - thunk / saga
 
