@@ -25,6 +25,7 @@
 #### Features:
 - HMR
 - code splitting
+- ~~React Strict Mode~~
 
 > For webpack, eslint, babel, editorconfig and browserlist configs check rc files in the root of the project.
 

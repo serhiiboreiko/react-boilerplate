@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 
 import Loading from './Loading';
 
-const loadable = (
+const Loadable = (
   importFunction,
   { fallback = <Loading /> } = { fallback: <Loading /> },
 ) => {
@@ -19,4 +19,4 @@ const loadable = (
   return Wrapper;
 };
 
-export default loadable;
+export default Loadable;
