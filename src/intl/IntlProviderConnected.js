@@ -38,7 +38,7 @@ class IntlProviderConnected extends Component {
 }
 
 IntlProviderConnected.propTypes = {
-  children: PropTypes.elementType.isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default IntlProviderConnected;
