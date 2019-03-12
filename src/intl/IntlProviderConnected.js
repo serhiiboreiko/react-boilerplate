@@ -1,5 +1,6 @@
 // React
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Helpers
 import flattenMessages from 'src/helpers/intl/flattenMessages';
@@ -35,5 +36,9 @@ class IntlProviderConnected extends Component {
     );
   }
 }
+
+IntlProviderConnected.propTypes = {
+  children: PropTypes.elementType.isRequired,
+};
 
 export default IntlProviderConnected;
