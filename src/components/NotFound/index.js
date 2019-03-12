@@ -14,18 +14,26 @@ const Wrap = styled.div`
 `;
 
 const Code = styled.div`
-  font-size: 100px;
+  font-size: 150px;
   font-weight: bold;
   color: #141413;
   margin-bottom: 12px;
+  font-family: 'Arial';
 `;
 
-const onHover = () => FirstPage.preload();
+const Link = styled(NavLink)`
+  font-family: 'Arial';
+  text-decoration: none;
+  color: black;
+  opacity: 0.5;
+
+  &:hover { opacity: 1; }
+`;
 
 const NotFound = () => (
   <Wrap>
     <Code>404</Code>
-    <NavLink to="/" onMouseEnter={onHover}>Home</NavLink>
+    <Link to="/" onMouseEnter={FirstPage.preload}>Home</Link>
   </Wrap>
 );
 

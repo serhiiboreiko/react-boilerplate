@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
-import dayjs from 'dayjs';
+// Absolute imports
+import React from 'react';
 
-class SecondPage extends Component {
-  constructor(props) {
-    super(props);
+// Components
+import Title from 'src/components/shared/Title';
 
-    this.state = {};
-  }
+// Styled
+import { Container, Link } from './styled';
 
-  render() {
-    return (
-      <div>
-        second page
-        {dayjs().format('YYYY MMM DD')}
-      </div>
-    );
-  }
-}
+const SecondPage = () => (
+  <Container>
+    <Title type="dark">Second page</Title>
+    <Link to="/404">Not found page</Link>
+  </Container>
+);
 
 export default SecondPage;

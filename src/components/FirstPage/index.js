@@ -1,26 +1,17 @@
-import React, { Component } from 'react';
+// Absolute imports
+import React from 'react';
 
-import Input from 'src/components/shared/Form/Input';
+// Components
+import Title from 'src/components/shared/Title';
 
-class FirstPage extends Component {
-  state = {
-    input: '',
-  };
+// Styled
+import { Container, Link } from './styled';
 
-  onChange = (event) => {
-    this.setState({ input: event.target.value });
-  }
-
-  render() {
-    const { input } = this.state;
-
-    return (
-      <div>
-        Your value:
-        <Input value={input} onChange={this.onChange} />
-      </div>
-    );
-  }
-}
+const FirstPage = () => (
+  <Container>
+    <Title>First page</Title>
+    <Link to="/second-page">Second page</Link>
+  </Container>
+);
 
 export default FirstPage;
