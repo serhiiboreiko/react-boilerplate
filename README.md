@@ -2,7 +2,6 @@
 
 ### TODO
 - [ ] story book
-- [ ] thunk / saga
 
 #### Stack:
 - react
@@ -11,7 +10,7 @@
 - prop-types
 - styled-components
 - jest
-- thunk / saga
+- thunk
 
 #### Additional tools:
 - react-intl
