@@ -1,8 +1,5 @@
 ## React project boilerplate
 
-### TODO
-- [ ] story book
-
 #### Stack:
 - react
 - redux
