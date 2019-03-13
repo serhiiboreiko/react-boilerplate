@@ -1,6 +1,7 @@
 ## React project boilerplate
 
 ### TODO
+- [ ] story book
 - [ ] thunk / saga
 
 #### Stack:
