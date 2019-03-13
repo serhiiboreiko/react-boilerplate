@@ -78,3 +78,18 @@ yarn test
 ```
 
 You can always run this with some options like `--watch`. (See jest [docs](https://jestjs.io/docs/en/cli))
+
+
+#### Storybook
+
+To **start** storybook run:
+
+```bash
+yarn storybook
+```
+
+To **build** storybook run:
+
+```bash
+yarn storybook:build
+```
