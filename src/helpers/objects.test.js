@@ -10,5 +10,5 @@ test('Remove some fields', () => {
 });
 
 test('Nothing to remove', () => {
-  expect(removeFieldsFromObject(OBJECT)([])).toEqual(OBJECT);
+  expect(removeFieldsFromObject(OBJECT)([])).toEqual({});
 });

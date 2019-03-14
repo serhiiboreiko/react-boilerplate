@@ -1,5 +1,9 @@
 ## React project boilerplate
 
+#### TODO
+- [ ] jest report
+- [ ] jest precommit
+
 #### Stack:
 - react
 - redux

@@ -2,3 +2,4 @@ build
 build_storybook
 .DS_Store
 node_modules
+jest-output

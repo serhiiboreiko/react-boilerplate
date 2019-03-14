@@ -1,0 +1,126 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans';
+}
+
+body {
+  background: #f9f9f9;
+  padding-bottom: 32px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 32px;
+  padding-bottom: 0;
+}
+
+header h1 { font-weight: bold; }
+
+header .status {
+  margin-left: 24px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: white;
+}
+
+header .status.fail { background: rgb(255, 59, 48); }
+
+header .status.passed { background: rgb(76, 217, 100); }
+
+header .started {
+  margin-left: auto;
+  font-weight: bold;
+  opacity: 0.4;
+}
+
+.info {
+  padding: 32px;
+  padding-bottom: 0;
+}
+
+.info .row .failed,
+.info .row .passed,
+.info .row .value { font-weight: bold; }
+
+.info .row .failed { color: rgb(255, 59, 48); }
+.info .row .passed { color: rgb(76, 217, 100); }
+
+.test-suite {
+  margin: 32px;
+  margin-bottom: 0;
+  border-radius: 10px;
+  padding: 24px;
+  background: white;
+  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.1);
+}
+
+.test-suite .title {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.test-suite .title.opened {
+  padding-bottom: 24px;
+  border-bottom: 2px solid #efefef;
+}
+
+.test-suite .title .path {
+  background: #efefef;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Fira Code', 'Courier';
+}
+
+.test-suite .title .time {
+  margin-left: 20px;
+  font-weight: bold;
+  opacity: 0.4;
+}
+
+.test-suite .title i {
+  font-size: 20px;
+  opacity: 0.4;
+  margin-left: auto;
+}
+
+.test-suite .title i.opened { transform: rotate(90deg); }
+
+.test-suite .title .status {
+  margin-left: 24px;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.test-suite .title .status.fail { background: rgb(255, 59, 48); }
+.test-suite .title .status.passed { background: rgb(76, 217, 100); }
+
+.test-suite .tests { display: none; }
+.test-suite .tests.opened { display: block; }
+
+.test-suite .tests .test {
+  position: relative;
+  padding: 12px 24px;
+  padding-left: 32px;
+  background: #f8f8f8;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.test-suite .tests .test:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  border-radius: 4px 0 0 4px;
+}
+
+.test-suite .tests .test.failed:before { background: rgb(255, 59, 48); }
+.test-suite .tests .test.passed:before { background: rgb(76, 217, 100); }
