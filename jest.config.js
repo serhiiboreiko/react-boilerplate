@@ -1,13 +1,10 @@
 module.exports = {
+  collectCoverage: true,
+  coverageDirectory: './jest-output/coverage',
   reporters: [
     'default',
     ['./jest-config/Reporter.js', {
-      pageTitle: 'Tests Report',
-      outputPath: './jest-output/tests-results.html',
-      theme: 'lightTheme',
-      includeFailureMsg: true,
+      dirname: './jest-output/test-results/',
     }],
   ],
-  // collectCoverage: true,
-  // coverageDirectory: './jest-output/coverage',
 };

@@ -132,26 +132,30 @@
 
     .test-suite .tests .test.failed:before { background: rgb(255, 59, 48); }
     .test-suite .tests .test.passed:before { background: rgb(76, 217, 100); }
+
+    .test-suite .tests .test .error span {
+      color: #141413;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Test Results</h1>
     <div class="status {{globalStatus}}">{{globalStatus}}</div>
-    <div class="started">{{startDate}}</div>
+    <div class="started">{{startTime}}</div>
   </header>
   <div class="info">
     <div class="row">
       <span class="label">Test suites:</span>
-      <span class="failed">{{testSuitesFailed}} failed</span>,
-      <span class="passed">{{testSuitesPassed}} passed</span>,
-      <span class="value">{{testSuitesTotal}} total</span>
+      <span class="failed">{{numFailedTestSuites}} failed</span>,
+      <span class="passed">{{numPassedTestSuites}} passed</span>,
+      <span class="value">{{numTotalTestSuites}} total</span>
     </div>
     <div class="row">
       <span class="label">Tests:</span>
-      <span class="failed">{{testsFailed}} failed</span>,
-      <span class="passed">{{testsPassed}} passed</span>,
-      <span class="value">{{testsTotal}} total</span>
+      <span class="failed">{{numFailedTests}} failed</span>,
+      <span class="passed">{{numPassedTests}} passed</span>,
+      <span class="value">{{numTotalTests}} total</span>
     </div>
   </div>
   {{testSuites}}
