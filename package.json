@@ -7,7 +7,7 @@
     "install": "make",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --color --mode development",
-    "test": "jest",
+    "test": "jest --json --outputFile=./jest-output/test-results/results.json",
     "storybook": "start-storybook",
     "storybook:build": "build-storybook -c .storybook -o build_storybook"
   },
