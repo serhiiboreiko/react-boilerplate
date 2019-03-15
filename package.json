@@ -4,6 +4,7 @@
   "description": "React boilerplate for Bookingpal projects",
   "main": "index.js",
   "scripts": {
+    "install": "make",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --color --mode development",
     "test": "jest",
