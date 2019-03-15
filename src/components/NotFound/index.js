@@ -32,7 +32,7 @@ const Link = styled(NavLink)`
 
 const NotFound = () => (
   <Wrap>
-    <Code>404</Code>
+    <Code>1404</Code>
     <Link to="/" onMouseEnter={FirstPage.preload}>Home</Link>
   </Wrap>
 );
