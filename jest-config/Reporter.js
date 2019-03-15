@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Convert = require('ansi-to-html');
 
-const generateTests = (tests) => {
+const generateTestsHTML = (tests) => {
   const template = fs.readFileSync('./jest-config/test.html', 'utf8');
   const convert = new Convert();
 
@@ -10,7 +10,9 @@ const generateTests = (tests) => {
     const info = {
       name: test.title,
       status: test.status,
-      error: test.failureMessages.length ? convert.toHtml(test.failureMessages[0]).replace(/(\#fff|#ffffff|white|#FFF|#FFFFFF)/g, '#141413') : '',
+      error: test.failureMessages.length
+        ? convert.toHtml(test.failureMessages[0]).replace(/(\#fff|#ffffff|white|#FFF|#FFFFFF)/g, '#141413')
+        : '',
     };
 
     return Object
@@ -19,15 +21,17 @@ const generateTests = (tests) => {
   }).join('');
 };
 
-const generateTestSuites = (testSuites) => {
+const generateTestSuitesHTML = (testSuites) => {
   const template = fs.readFileSync('./jest-config/test-suite.html', 'utf8');
 
   return testSuites.map(testSuite => {
     const info = {
       path: testSuite.testFilePath.replace(__dirname.replace('jest-config', ''), ''),
       duration: testSuite.perfStats.end - testSuite.perfStats.start,
-      status: (testSuite.numFailingTests === 0) ? 'passed' : 'fail',
-      tests: generateTests(testSuite.testResults),
+      status: (testSuite.numFailingTests === 0)
+        ? 'passed'
+        : 'fail',
+      tests: generateTestsHTML(testSuite.testResults),
     };
 
     return Object
@@ -39,7 +43,7 @@ const generateTestSuites = (testSuites) => {
 const generateHTMLReport = (result) => {
   const template = fs.readFileSync('./jest-config/template.html', 'utf8');
 
-  const testSuites = generateTestSuites(result.testResults);
+  const testSuites = generateTestSuitesHTML(result.testResults);
 
   const mainInfo = {
     ...result,
