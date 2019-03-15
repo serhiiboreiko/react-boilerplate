@@ -10,7 +10,7 @@ import { Container, Link } from './styled';
 const FirstPage = () => (
   <Container>
     <Title>First page</Title>
-    <Link to="/second-page">Go to Second page</Link>
+    <Link to="/second-page">Second page</Link>
   </Container>
 );
 
