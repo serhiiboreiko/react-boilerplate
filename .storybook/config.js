@@ -11,6 +11,7 @@ addDecorator(withThemesProvider(themes));
 // Add global styles and fonts
 require('../src/styles/fonts.css');
 require('../src/styles/index.css');
+require('./override.css');
 
 const loadStories = () => {
   require('../src/components/stories');
