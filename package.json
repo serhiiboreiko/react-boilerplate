@@ -47,6 +47,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "react-hot-loader": "^4.7.2",
     "react-svg-loader": "^2.1.0",
+    "storybook-addon-styled-component-theme": "^1.1.1",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.3",
     "url-loader": "^1.1.2",
