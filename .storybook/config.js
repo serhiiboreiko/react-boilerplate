@@ -15,7 +15,6 @@ require('./override.css');
 
 const loadStories = () => {
   require('../src/components/stories');
-  require('../src/components/stories/text');
 };
 
 configure(loadStories, module);
