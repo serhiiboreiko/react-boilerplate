@@ -1,11 +1,15 @@
+// import your stories here like this:
+// import './some-story';
+
+// Story example
+/*
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@storybook/react/demo';
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button>Hello Button</Button>
-  ))
-  .add('with emoji', () => (
-    <Button><span role="img" aria-label="so cool">😀 😎 👍 💯</span></Button>
+import Component from 'path/to/Component';
+
+storiesOf('Component', module)
+  .add('Component example', () => (
+    <Component />
   ));
+*/

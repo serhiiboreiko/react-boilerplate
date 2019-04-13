@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
+const detect = require('detect-port');
 
 // Plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -48,142 +49,146 @@ const getEnvConfig = (argv, mode) => {
   return envKeys;
 };
 
-module.exports = (_, { mode, analyze, ...argv }) => ({
-  entry: {
-    index: './src/index.js',
-  },
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: (mode === 'production') ? 'js/bundle.[hash:8].js' : 'js/bundle.js',
-    chunkFilename: 'js/[name].[hash:8].bundle.js',
-    publicPath: '/',
-  },
-  stats: {
-    chunksSort: 'size',
-    assetsSort: 'size',
-    modules: false,
-    entrypoints: false,
-    hash: false,
-    version: false,
-  },
-  performance: {
-    maxEntrypointSize: 500000,
-    maxAssetSize: 500000,
-  },
-  resolve: {
-    symlinks: false,
-    alias: { src: path.resolve('./src') },
-  },
-  devtool: (mode === 'development') ? 'cheap-module-source-map' : false,
-  devServer: {
-    contentBase: './dist',
-    port: 3000,
-    hot: true,
-    compress: true,
-    watchContentBase: true,
-    stats: 'minimal',
-    historyApiFallback: { disableDotRule: true },
-  },
-  optimization: {
-    splitChunks: { chunks: 'all' },
-    nodeEnv: mode,
-    minimize: (mode === 'production'),
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          parse: { ecma: 8 },
-          compress: {
-            ecma: 5,
-            warnings: false,
-            comparisons: false,
-            inline: 2,
+module.exports = async (_, { mode, analyze, ...argv }) => {
+  const port = await detect(3000);
+
+  return {
+    entry: {
+      index: './src/index.js',
+    },
+    output: {
+      path: path.resolve(__dirname, 'build'),
+      filename: (mode === 'production') ? 'js/bundle.[hash:8].js' : 'js/bundle.js',
+      chunkFilename: 'js/[name].[hash:8].bundle.js',
+      publicPath: '/',
+    },
+    stats: {
+      chunksSort: 'size',
+      assetsSort: 'size',
+      modules: false,
+      entrypoints: false,
+      hash: false,
+      version: false,
+    },
+    performance: {
+      maxEntrypointSize: 500000,
+      maxAssetSize: 500000,
+    },
+    resolve: {
+      symlinks: false,
+      alias: { src: path.resolve('./src') },
+    },
+    devtool: (mode === 'development') ? 'cheap-module-source-map' : false,
+    devServer: {
+      contentBase: './dist',
+      port,
+      hot: true,
+      compress: true,
+      watchContentBase: true,
+      stats: 'minimal',
+      historyApiFallback: { disableDotRule: true },
+    },
+    optimization: {
+      splitChunks: { chunks: 'all' },
+      nodeEnv: mode,
+      minimize: (mode === 'production'),
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            parse: { ecma: 8 },
+            compress: {
+              ecma: 5,
+              warnings: false,
+              comparisons: false,
+              inline: 2,
+            },
+            mangle: { safari10: true },
+            output: {
+              ecma: 5,
+              comments: false,
+              ascii_only: true,
+            },
           },
-          mangle: { safari10: true },
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii_only: true,
-          },
+          parallel: true,
+          sourceMap: true,
+        }),
+        new OptimizeCSSAssetsPlugin({}),
+      ],
+    },
+    module: {
+      rules: [
+        // Eslint
+        {
+          test: /\.(js|jsx|mjs)$/,
+          enforce: 'pre',
+          include: path.resolve(__dirname, 'src'),
+          use: { loader: 'eslint-loader' },
         },
-        parallel: true,
-        sourceMap: true,
+        // Images optimization
+        {
+          test: /\.(jpg|png|gif)$/,
+          loader: 'image-webpack-loader',
+          enforce: 'pre',
+        },
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          include: path.resolve(__dirname, 'src'),
+          use: { loader: 'babel-loader' },
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          include: path.resolve(__dirname, 'src'),
+          use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+        },
+        {
+          test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.ttf$/, /\.eot$/, /\.woff$/, /\.woff2$/, /\.otf$/],
+          include: path.resolve(__dirname, 'src'),
+          loader: 'url-loader',
+          options: { limit: 10 * 1024, name: 'media/[name].[hash:8].[ext]' },
+        },
+        // Use SVG as React components
+        // <SomeIcon />
+        {
+          test: /\.svg$/,
+          use: [
+            { loader: 'babel-loader' },
+            { loader: 'react-svg-loader', options: { jsx: true } },
+          ],
+        },
+        {
+          test: /\.html$/,
+          use: { loader: 'html-loader' },
+        },
+      ],
+    },
+    plugins: [
+      new CleanWebpackPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.DefinePlugin(getEnvConfig(argv, mode)),
+      new HtmlWebpackPlugin({
+        favicon: './public/favicon.png',
+        template: './public/index.html',
+        filename: './index.html',
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          keepClosingSlash: true,
+          minifyJS: true,
+          minifyCSS: true,
+          minifyURLs: true,
+        },
       }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-  },
-  module: {
-    rules: [
-      // Eslint
-      {
-        test: /\.(js|jsx|mjs)$/,
-        enforce: 'pre',
-        include: path.resolve(__dirname, 'src'),
-        use: { loader: 'eslint-loader' },
-      },
-      // Images optimization
-      {
-        test: /\.(jpg|png|gif)$/,
-        loader: 'image-webpack-loader',
-        enforce: 'pre',
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        include: path.resolve(__dirname, 'src'),
-        use: { loader: 'babel-loader' },
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
-      },
-      {
-        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/, /\.ttf$/, /\.eot$/, /\.woff$/, /\.woff2$/, /\.otf$/],
-        include: path.resolve(__dirname, 'src'),
-        loader: 'url-loader',
-        options: { limit: 10 * 1024, name: 'media/[name].[hash:8].[ext]' },
-      },
-      // Use SVG as React components
-      // <SomeIcon />
-      {
-        test: /\.svg$/,
-        use: [
-          { loader: 'babel-loader' },
-          { loader: 'react-svg-loader', options: { jsx: true } },
-        ],
-      },
-      {
-        test: /\.html$/,
-        use: { loader: 'html-loader' },
-      },
-    ],
-  },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin(getEnvConfig(argv, mode)),
-    new HtmlWebpackPlugin({
-      favicon: './public/favicon.png',
-      template: './public/index.html',
-      filename: './index.html',
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'css/main.[contenthash].css',
-      chunkFilename: 'css/chunk.[id].[contenthash].css',
-    }),
-    analyze && new BundleAnalyzerPlugin(),
-  ].filter(Boolean),
-});
+      new MiniCssExtractPlugin({
+        filename: 'css/main.[contenthash].css',
+        chunkFilename: 'css/chunk.[id].[contenthash].css',
+      }),
+      analyze && new BundleAnalyzerPlugin(),
+    ].filter(Boolean),
+  };
+};

@@ -74,7 +74,12 @@ To run tests just run this:
 yarn test
 ```
 
+> Note: `yarn test` is running on every commit.
+
 You can always run this with some options like `--watch`. (See jest [docs](https://jestjs.io/docs/en/cli))
+
+> This will generate 3 reports. With test results and with test coverage.
+In the `./jest-output` you will find `coverage` and `test-results` folders. Test results you can view either as json or as html.
 
 
 #### Storybook
