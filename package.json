@@ -1,7 +1,7 @@
 {
-  "name": "mbp-react-boilerplate",
+  "name": "react-boilerplate",
   "version": "0.0.1",
-  "description": "React boilerplate for Bookingpal projects",
+  "description": "React boilerplate for myself",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
