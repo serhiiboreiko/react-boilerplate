@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "autobind": "^1.0.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.9",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
